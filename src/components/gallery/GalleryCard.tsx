@@ -17,15 +17,16 @@ export const GalleryCard = ({ image, onClick }: GalleryCardProps) => {
 
   return (
     <Card 
-      className="group cursor-pointer bg-gallery-card border-border overflow-hidden hover:shadow-elegant transition-smooth hover:scale-[1.02]"
+      className="group cursor-pointer bg-gallery-card  hover:shadow-elegant transition-smooth hover:scale-[1.02]" //border-border overflow-hidden 
       onClick={onClick}
-    >
+    ><div className="polaroid">
       <div className="aspect-square relative overflow-hidden">
         {!imageError ? (
           <>
             {!imageLoaded && (
+              
               <div className="absolute inset-0 bg-muted animate-pulse flex items-center justify-center">
-                <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                <div className="w-8 h-8 border- border-primary border-t-transparent rounded-full animate-spin" />
               </div>
             )}
             <img
@@ -44,13 +45,13 @@ export const GalleryCard = ({ image, onClick }: GalleryCardProps) => {
             <p className="text-muted-foreground text-sm">Erro ao carregar</p>
           </div>
         )}
-        
+        </div>
         <div className="absolute inset-0 bg-gradient-overlay opacity-0 group-hover:opacity-100 transition-smooth" />
         
         <div className="absolute bottom-0 left-0 right-0 p-4 text-center">
-          <p className="text-foreground font-medium opacity-0 group-hover:opacity-100 transition-smooth transform translate-y-2 group-hover:translate-y-0">
+          {/* <p className="text-foreground font-medium opacity-0 group-hover:opacity-100 transition-smooth transform translate-y-2 group-hover:translate-y-0">
             Nossa Galeria
-          </p>
+          </p> */}
         </div>
       </div>
     </Card>

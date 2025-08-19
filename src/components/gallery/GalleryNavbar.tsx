@@ -22,7 +22,8 @@ export const GalleryNavbar = ({ categories, onCategoryClick }: GalleryNavbarProp
       <nav className="hidden md:block fixed top-0 left-0 right-0 z-40 bg-gallery-nav/95 backdrop-blur-sm border-b border-border">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-xl font-bold text-foreground">Nossa Galeria</h1>
+          <img src="public/LogoAL.png" alt="logo" className="h-11 w-auto" />
+            <h1 className="text-xl font-bold text-foreground">NOSSA GA+LERIA </h1>
             <div className="flex space-x-2 max-w-2xl overflow-x-auto">
               {categories.map((category) => (
                 <Button
@@ -42,7 +43,8 @@ export const GalleryNavbar = ({ categories, onCategoryClick }: GalleryNavbarProp
       {/* Mobile Navbar */}
       <nav className="md:hidden fixed top-0 left-0 right-0 z-40 bg-gallery-nav/95 backdrop-blur-sm border-b border-border">
         <div className="flex items-center justify-between px-4 py-4">
-          <h1 className="text-lg font-bold text-foreground">Nossa Galeria</h1>
+          <img src="public/LogoAL.png" alt="logo" className="h-11 w-auto" />
+
           <Button
             variant="ghost"
             size="icon"
@@ -74,7 +76,7 @@ export const GalleryNavbar = ({ categories, onCategoryClick }: GalleryNavbarProp
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div 
+        <div
           className="md:hidden fixed inset-0 z-40 bg-gallery-overlay"
           onClick={() => setIsMenuOpen(false)}
         />

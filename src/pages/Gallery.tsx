@@ -5,12 +5,13 @@ import { ImageModal } from "@/components/gallery/ImageModal";
 import { GalleryLoading } from "@/components/gallery/GalleryLoading";
 import { GalleryError } from "@/components/gallery/GalleryError";
 import { useImageGallery } from "@/hooks/useImageGallery";
+import { GalleryFooter } from "@/components/gallery/GalleryFooter";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
-  
+
   const { images, loading, error, getImagesByCategory, getCategories } = useImageGallery();
 
   const imagesByCategory = getImagesByCategory();
@@ -40,16 +41,16 @@ const Gallery = () => {
 
   const getModalImages = () => {
     if (!selectedImage) return [];
-    
+
     const selectedImg = images.find(img => img.id === selectedImage);
     if (!selectedImg) return [];
-    
+
     return imagesByCategory[selectedImg.category] || [];
   };
 
   const getInitialImageIndex = () => {
     if (!selectedImage) return 0;
-    
+
     const modalImages = getModalImages();
     return modalImages.findIndex(img => img.id === selectedImage) || 0;
   };
@@ -60,7 +61,7 @@ const Gallery = () => {
 
   return (
     <div className="min-h-screen bg-gallery-bg">
-      <GalleryNavbar 
+      <GalleryNavbar
         categories={categories}
         onCategoryClick={scrollToCategory}
       />
@@ -71,7 +72,7 @@ const Gallery = () => {
             // Pega apenas a primeira imagem de cada categoria para mostrar na galeria
             const firstImage = imagesByCategory[category][0];
             const totalImages = imagesByCategory[category].length;
-            
+
             return (
               <section
                 key={category}
@@ -83,7 +84,7 @@ const Gallery = () => {
                 <h2 className="text-2xl font-bold text-foreground text-center">
                   {category}
                 </h2>
-                
+
                 {/* Mostra apenas uma imagem por categoria */}
                 <div className="flex justify-center">
                   <div className="relative">
@@ -109,6 +110,7 @@ const Gallery = () => {
         images={getModalImages()}
         initialImageIndex={getInitialImageIndex()}
       />
+      <GalleryFooter />
     </div>
   );
 };
